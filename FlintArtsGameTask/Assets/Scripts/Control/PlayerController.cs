@@ -6,7 +6,7 @@ namespace Control
     [RequireComponent(typeof(Mover))]
     public class PlayerController : MonoBehaviour
     {
-        void Update()
+        private void Update()
         {
             InteractWithMovement();
         }

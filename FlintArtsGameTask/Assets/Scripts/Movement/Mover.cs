@@ -8,11 +8,26 @@ namespace Movement
     {
         [SerializeField] float maxSpeed = 6f;
 
-        private NavMeshAgent _navMeshAgent;
+        private static readonly int ForwardSpeed = Animator.StringToHash("forwardSpeed");
         
-        void Start()
+        private NavMeshAgent _navMeshAgent;
+
+        private void Start()
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Update()
+        {
+            UpdateAnimatior();
+        }
+
+        private void UpdateAnimatior()
+        {
+            Vector3 velocity = _navMeshAgent.velocity;
+            Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+            float speed = localVelocity.z;
+            GetComponent<Animator>().SetFloat(ForwardSpeed, speed);
         }
 
         public void MoveTo(Vector3 destination, float speedFraction)
