@@ -3,17 +3,22 @@ using UnityEngine.AI;
 
 namespace Movement
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Mover : MonoBehaviour
     {
-        [SerializeField] private Transform target;
+        [SerializeField] float maxSpeed = 6f;
+
+        private NavMeshAgent _navMeshAgent;
+        
         void Start()
         {
-        
+            _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
-        void Update()
+        public void MoveTo(Vector3 destination, float speedFraction)
         {
-            GetComponent<NavMeshAgent>().SetDestination(target.position);
+            _navMeshAgent.destination = destination;
+            _navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
         }
     }
 }
