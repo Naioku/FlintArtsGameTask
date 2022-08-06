@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Control
 {
+    /// <summary>
+    /// Controls whole player action like movement and manage inventory.
+    /// </summary>
     [RequireComponent(typeof(Mover))]
     public class PlayerController : MonoBehaviour
     {
@@ -31,6 +34,11 @@ namespace Control
             InteractWithMovement();
         }
 
+        /// <summary>
+        /// Manages addition of items to the inventory.
+        /// </summary>
+        /// <param name="uiItem">Item which is added to the inventory.</param>
+        /// <returns>Returns a bool based on whether addition had been completed successfully or not.</returns>
         public bool AddItemToInventory(UIItem uiItem)
         {
             if (!_inventory.AddItem(uiItem)) return false;
@@ -41,6 +49,10 @@ namespace Control
 
         }
         
+        /// <summary>
+        /// Manages removal of items from the inventory.
+        /// </summary>
+        /// <param name="uiItem">Item which is removed from the inventory.</param>
         public void RemoveItemFromInventory(UIItem uiItem)
         {
             _inventory.RemoveItem(uiItem);

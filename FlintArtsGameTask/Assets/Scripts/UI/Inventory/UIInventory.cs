@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
+    /// <summary>
+    /// Inventory front-end class. Manages whole inventory UI side.
+    /// </summary>
     public class UIInventory : MonoBehaviour
     {
         [Tooltip("Content of the UI inventory.")]
@@ -18,6 +21,9 @@ namespace UI.Inventory
             SetMaxSize();
         }
 
+        /// <summary>
+        /// Refreshes whole inventory UI view and synchronizes with back-end inventory side.
+        /// </summary>
         public void RefreshView()
         {
             ClearView();
@@ -37,6 +43,9 @@ namespace UI.Inventory
             }
         }
 
+        /// <summary>
+        /// Clears whole inventory view from items.
+        /// </summary>
         public void ClearView()
         {
             foreach (RectTransform itemSlot in content)
