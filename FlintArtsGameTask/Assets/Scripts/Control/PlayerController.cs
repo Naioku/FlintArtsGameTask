@@ -1,4 +1,5 @@
 using Movement;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Control
@@ -6,9 +7,27 @@ namespace Control
     [RequireComponent(typeof(Mover))]
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private UIInventory uiInventory;
+        private Inventory _inventory;
+
+        private void Start()
+        {
+            _inventory = new Inventory();
+            uiInventory.SetInventory(_inventory);
+        }
+
         private void Update()
         {
             InteractWithMovement();
+        }
+
+        public bool AddItemToInventory(UIItem uiItem)
+        {
+            if (!_inventory.AddItem(uiItem)) return false;
+            
+            uiInventory.RefreshView();
+            return true;
+
         }
         
         private void InteractWithMovement()
