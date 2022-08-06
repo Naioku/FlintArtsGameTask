@@ -18,7 +18,9 @@ namespace UI.Inventory
             playerController.RemoveItemFromInventory(_uiItem);
             Transform playerTransform = playerController.transform;
             Vector3 dropPosition = playerTransform.position + playerTransform.forward * 2f;
-            Instantiate(_uiItem.Prefab, dropPosition, Quaternion.identity);
+            
+            GameObject pickupsContainer = GameObject.FindWithTag("PickupsContainer");
+            Instantiate(_uiItem.Prefab, dropPosition, Quaternion.identity).transform.SetParent(pickupsContainer.transform);
         }
     }
 }
