@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c4135c57460b249ad599557b4af88e, type: 3}
+  m_Name: DeliverManaPotion
+  m_EditorClassIdentifier: 
+  questName: Cleaning up
+  questDescription: Take and move mata potion to the left room.
+  deliveryItem: {fileID: 3762336232850002942, guid: a1e7421b239821349877e16f99a16589,
+    type: 3}

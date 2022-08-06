@@ -9610,6 +9610,8 @@ GameObject:
   - component: {fileID: 1649187838}
   - component: {fileID: 1649187840}
   - component: {fileID: 1649187839}
+  - component: {fileID: 1649187841}
+  - component: {fileID: 1649187842}
   m_Layer: 2
   m_Name: LeftRoom
   m_TagString: Untagged
@@ -9640,7 +9642,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649187837}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -9662,6 +9664,35 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 7c6e8eeb04eace4438c2c582407ef31a, type: 2}
+--- !u!114 &1649187841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649187837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d7b081715bd1e40a41752721b1decc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deliveryQuest: {fileID: 11400000, guid: e0820ce04589ade40883b23c4e285474, type: 2}
+--- !u!54 &1649187842
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649187837}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1658886766
 PrefabInstance:
   m_ObjectHideFlags: 0
