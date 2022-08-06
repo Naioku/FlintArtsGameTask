@@ -19,7 +19,7 @@ namespace UI.Inventory
         {
             if (_itemCollection.Count >= MaxSize)
             {
-                Debug.Log("You can't carry more items.");
+                Object.FindObjectOfType<HUDInfoCanvas>().FadeInOutMessage(Messages.InventoryFull);
                 return false;
             }
             
@@ -30,7 +30,6 @@ namespace UI.Inventory
         public void RemoveItem(UIItem uiItem)
         {
             _itemCollection.Remove(uiItem);
-            Debug.Log(_itemCollection.Count);
         }
     }
 }
