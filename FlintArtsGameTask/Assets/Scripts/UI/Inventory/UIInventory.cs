@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace UI.Inventory
         [Tooltip("Content of the UI inventory.")]
         [SerializeField] private RectTransform content;
         
-        [SerializeField] private GameObject inventorySlot;
+        [SerializeField] private GameObject inventorySlotPrefab;
         
         private Inventory _inventory;
 
@@ -20,14 +21,30 @@ namespace UI.Inventory
 
         public void RefreshView()
         {
-            int childIndex = 0;
+            ClearView();
+            int inventorySlotIndex = 0;
             foreach (var item in _inventory.GetAllItems)
             {
-                var image = content.GetChild(childIndex).GetChild(0).GetComponent<Image>();
-                image.sprite = item.Image;
+                Transform inventoryItem = content.GetChild(inventorySlotIndex).GetChild(0);
+                var image = inventoryItem.GetComponent<Image>();
+                image.sprite = item.UIImage;
                 image.enabled = true;
                 
-                childIndex++;
+                inventoryItem.GetComponent<Button>().interactable = true;
+
+                inventoryItem.GetComponent<InventoryItem>().SetUIItem(item);
+                
+                inventorySlotIndex++;
+            }
+        }
+
+        public void ClearView()
+        {
+            foreach (RectTransform itemSlot in content)
+            {
+                var image = itemSlot.GetChild(0).GetComponent<Image>();
+                image.sprite = null;
+                image.enabled = false;
             }
         }
 
@@ -35,7 +52,7 @@ namespace UI.Inventory
         {
             for (int i = 0; i < _inventory.MaxSize; i++)
             {
-                Instantiate(inventorySlot, content);
+                Instantiate(inventorySlotPrefab, content);
             }
         }
     }

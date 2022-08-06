@@ -8,6 +8,8 @@ namespace Control
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private UIInventory uiInventory;
+        [SerializeField] private float speedFraction = 1f;
+        
         private Inventory _inventory;
 
         private void Start()
@@ -30,6 +32,12 @@ namespace Control
 
         }
         
+        public void RemoveItemFromInventory(UIItem uiItem)
+        {
+            _inventory.RemoveItem(uiItem);
+            uiInventory.RefreshView();
+        }
+        
         private void InteractWithMovement()
         {
             RaycastHit hit;
@@ -38,7 +46,7 @@ namespace Control
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().MoveTo(hit.point, 1f);
+                    GetComponent<Mover>().MoveTo(hit.point, speedFraction);
                 }
             }
         }

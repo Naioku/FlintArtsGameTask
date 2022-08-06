@@ -19,10 +19,10 @@ namespace Movement
 
         private void Update()
         {
-            UpdateAnimatior();
+            UpdateAnimator();
         }
 
-        private void UpdateAnimatior()
+        private void UpdateAnimator()
         {
             Vector3 velocity = _navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(velocity);
