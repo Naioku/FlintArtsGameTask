@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UI.Inventory
 {
+    /// <summary>
+    /// Manages inventory item displayed in the UI side of inventory.
+    /// </summary>
     public class InventoryItem : MonoBehaviour
     {
         private UIItem _uiItem;
@@ -12,6 +15,9 @@ namespace UI.Inventory
             _uiItem = uiItem;
         }
 
+        /// <summary>
+        /// Method used by Button component. Manages dropping item from inventory to the world space.
+        /// </summary>
         public void OnDropItem()
         {
             var playerController = FindObjectOfType<PlayerController>();

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace UI
 {
+    /// <summary>
+    /// Manages displaying of info messages. 
+    /// </summary>
     public class HUDInfoCanvas : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI displayedTextField;
@@ -20,10 +23,13 @@ namespace UI
             _canvasGroup.alpha = 0f;
         }
 
+        /// <summary>
+        /// Showing messages with fade in and out.
+        /// </summary>
+        /// <param name="message">Message to display.</param>
         public void FadeInOutMessage(string message)
         {
             displayedTextField.text = message;
-            // displayedTextField.autoSizeTextContainer = true;
             ResetCanvas();
             _currentRunningCoroutine = StartCoroutine(FadeInOut());
         }
