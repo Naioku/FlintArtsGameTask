@@ -7,14 +7,18 @@ namespace Control
     [RequireComponent(typeof(Mover))]
     public class PlayerController : MonoBehaviour
     {
+        [Header("Inventory")]
         [SerializeField] private UIInventory uiInventory;
+        [SerializeField] private int inventoryMaxSize = 2;
+        
+        [Header("Movement")]
         [SerializeField] private float speedFraction = 1f;
         
         private Inventory _inventory;
 
         private void Start()
         {
-            _inventory = new Inventory();
+            _inventory = new Inventory(inventoryMaxSize);
             uiInventory.SetInventory(_inventory);
         }
 

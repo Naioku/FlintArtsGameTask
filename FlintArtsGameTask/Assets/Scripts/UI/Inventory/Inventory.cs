@@ -6,9 +6,14 @@ namespace UI.Inventory
     public class Inventory
     {
         private readonly List<UIItem> _itemCollection = new();
+
+        public Inventory(int maxSize)
+        {
+            MaxSize = maxSize;
+        }
         
         public List<UIItem> GetAllItems => _itemCollection;
-        public int MaxSize => 2;
+        public int MaxSize { get; }
 
         public bool AddItem(UIItem uiItem)
         {
