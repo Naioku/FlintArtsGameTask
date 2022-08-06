@@ -1,4 +1,5 @@
 using Movement;
+using UI.Inventory;
 using UnityEngine;
 
 namespace Control
@@ -6,9 +7,39 @@ namespace Control
     [RequireComponent(typeof(Mover))]
     public class PlayerController : MonoBehaviour
     {
+        [Header("Inventory")]
+        [SerializeField] private UIInventory uiInventory;
+        [SerializeField] private int inventoryMaxSize = 2;
+        
+        [Header("Movement")]
+        [SerializeField] private float speedFraction = 1f;
+        
+        private Inventory _inventory;
+
+        private void Start()
+        {
+            _inventory = new Inventory(inventoryMaxSize);
+            uiInventory.SetInventory(_inventory);
+        }
+
         private void Update()
         {
             InteractWithMovement();
+        }
+
+        public bool AddItemToInventory(UIItem uiItem)
+        {
+            if (!_inventory.AddItem(uiItem)) return false;
+            
+            uiInventory.RefreshView();
+            return true;
+
+        }
+        
+        public void RemoveItemFromInventory(UIItem uiItem)
+        {
+            _inventory.RemoveItem(uiItem);
+            uiInventory.RefreshView();
         }
         
         private void InteractWithMovement()
@@ -19,7 +50,7 @@ namespace Control
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GetComponent<Mover>().MoveTo(hit.point, 1f);
+                    GetComponent<Mover>().MoveTo(hit.point, speedFraction);
                 }
             }
         }
