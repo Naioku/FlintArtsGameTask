@@ -15,10 +15,14 @@ namespace UI.Inventory
         public void OnDropItem()
         {
             var playerController = FindObjectOfType<PlayerController>();
+            InstantiateItem(playerController);
             playerController.RemoveItemFromInventory(_uiItem);
+        }
+
+        private void InstantiateItem(PlayerController playerController)
+        {
             Transform playerTransform = playerController.transform;
             Vector3 dropPosition = playerTransform.position + playerTransform.forward * 2f;
-            
             GameObject pickupsContainer = GameObject.FindWithTag("PickupsContainer");
             Instantiate(_uiItem.Prefab, dropPosition, Quaternion.identity).transform.SetParent(pickupsContainer.transform);
         }
